@@ -5,7 +5,7 @@ services:
     image: mariadb:10.11
     command: ['mysqld','--character-set-server=utf8mb4','--ssl-ca=/etc/ssl/ca.pem','--ssl_cert=/etc/ssl/server-cert.pem','--ssl_key=/etc/ssl/server-key.pem']
     ports:
-    - 8320:3306
+    - 3306:3306
     volumes:
     - ../library/sql-ssl-certs-keys/easy/ca.pem:/etc/ssl/ca.pem:ro
     - ../library/sql-ssl-certs-keys/easy/server-cert.pem:/etc/ssl/server-cert.pem:ro
@@ -17,8 +17,8 @@ services:
     restart: always
     image: openemr/openemr:flex
     ports:
-    - 8080:80
-    - 8081:443
+    - 80:80
+    - 443:443
     volumes:
     - ../..:/openemr:ro
     - ../..:/var/www/localhost/htdocs/openemr:rw
